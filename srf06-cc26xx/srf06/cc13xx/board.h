@@ -51,7 +51,7 @@
  */
 #define BOARD_IOID_LED_1          IOID_13
 #define BOARD_IOID_LED_2          IOID_12
-#define BOARD_IOID_LED_3          IOID_UNUSED
+#define BOARD_IOID_LED_3          IOID_14
 #define BOARD_IOID_LED_4          IOID_UNUSED	
 #define BOARD_LED_1               (1 << BOARD_IOID_LED_1)
 #define BOARD_LED_2               (1 << BOARD_IOID_LED_2)
@@ -83,7 +83,7 @@
  * Those values are not meant to be modified by the user
  * @{
  */
-#define BOARD_IOID_KEY_LEFT       IOID_14
+#define BOARD_IOID_KEY_LEFT       IOID_UNUSED
 #define BOARD_IOID_KEY_RIGHT      IOID_UNUSED
 #define BOARD_IOID_KEY_UP         IOID_UNUSED
 #define BOARD_IOID_KEY_DOWN       IOID_UNUSED
