@@ -789,6 +789,10 @@ PROCESS_THREAD(cc26xx_web_demo_process, ev, data)
 #if CC26XX_WEB_DEMO_NET_UART
   process_start(&net_uart_process, NULL);
 #endif
+ 
+ #if CC26XX_WEB_DEMO_TEST_LED
+ process_start(&blink_process,NULL);
+ #endif
 
   cc26xx_web_demo_config.sensors_bitmap = 0xFFFFFFFF; /* all on by default */
   cc26xx_web_demo_config.def_rt_ping_interval =
