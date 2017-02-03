@@ -19,6 +19,7 @@
 #include "sys/process.h"
 #include "mqtt-client.h"
 #include "net-uart.h"
+#include "test_led2.h"
 
 #include <stdint.h>
 /*---------------------------------------------------------------------------*/
@@ -44,6 +45,12 @@
 #define CC26XX_WEB_DEMO_NET_UART CC26XX_WEB_DEMO_CONF_NET_UART
 #else
 #define CC26XX_WEB_DEMO_NET_UART 1
+#endif
+
+#ifdef CC26XX_WEB_DEMO_CONF_TEST_LED
+#define CC26XX_WEB_DEMO_TEST_LED CC26XX_WEB_DEMO_TEST_LED
+#else
+#define CC26XX_WEB_DEMO_TEST_LED 1
 #endif
 /*---------------------------------------------------------------------------*/
 /* Active probing of RSSI from our preferred parent */
