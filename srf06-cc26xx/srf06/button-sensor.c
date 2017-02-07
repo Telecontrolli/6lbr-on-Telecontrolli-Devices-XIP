@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: button-sensor.c V1.0
+ * File: button-sensor.c V1.2
  * Description: Driver for the SmartRF06EB buttons when a CC13xx/CC26xxEM is mounted on it
  */
 /*---------------------------------------------------------------------------*/
