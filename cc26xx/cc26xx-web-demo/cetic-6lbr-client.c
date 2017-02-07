@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: cetic-6lbr-client.c V1.0
+ * File: cetic-6lbr-client.c V1.1
  * Description:An implementation of a 6LBR UDP client. Is used to populate the 6LBR
  * web server's 'sensors' tab
  */
