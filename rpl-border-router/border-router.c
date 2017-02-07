@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: border-router.c V1.0
+ * File: border-router.c V1.2
  * Description: border-router
  */
 
