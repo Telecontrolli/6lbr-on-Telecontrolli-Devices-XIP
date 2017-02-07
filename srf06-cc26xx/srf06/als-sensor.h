@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: als-sensor.h V1.0
+ * File: als-sensor.h V1.1
  * Description: Header file for the SmartRF06EB + CC13xx/CC26xxEM ALS Driver
  */
 /*---------------------------------------------------------------------------*/
