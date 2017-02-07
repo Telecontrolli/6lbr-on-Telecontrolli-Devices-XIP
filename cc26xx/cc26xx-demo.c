@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: cc26xx-demo.c V1.0
+ * File: cc26xx-demo.c V1.2
  * Description:
  *    Example project demonstrating the CC26xx platforms
  *
