@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: contiki-conf.h V1.0
+ * File: contiki-conf.h V1.1
  * Description: Configuration for the srf06-cc26xx platform
  */
 #ifndef CONTIKI_CONF_H
