@@ -1,6 +1,6 @@
 /*
  *  * Author: Telecontrolli srl
- * File: slip-radio.h V1.0
+ * File: slip-radio.h V1.1
  * Description: The file slip-radio.h set the sensors of slip-radio
  */
 #ifndef SLIP_RADIO_H_
