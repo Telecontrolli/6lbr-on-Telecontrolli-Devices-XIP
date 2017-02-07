@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: board.c V1.0
+ * File: board.c V1.2
  * Description:Board-initialisation for the Srf06EB with a CC13xx/CC26xx EM.
  */
 /*---------------------------------------------------------------------------*/
