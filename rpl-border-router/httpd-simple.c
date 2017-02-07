@@ -1,6 +1,6 @@
 /*
   * Author: Telecontrolli srl
- * File: httpd-simple.c V1.0
+ * File: httpd-simple.c V1.1
  * Description: A simple web server forwarding page generation to a protothread
  */
 
