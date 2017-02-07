@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: contiki-main.c V1.0
+ * File: contiki-main.c V1.2
  * Description: This platform supports a number of different boards:
  *    		- A standard TI SmartRF06EB with a CC26xx EM mounted on it
  * 		- A standard TI SmartRF06EB with a CC1310 EM mounted on it
