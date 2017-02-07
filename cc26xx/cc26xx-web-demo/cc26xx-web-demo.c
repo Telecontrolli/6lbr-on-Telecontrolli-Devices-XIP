@@ -1,6 +1,6 @@
 /*
  Author: Telecontrolli srl
- File: cc26xx-web-demo.c V1.0
+ File: cc26xx-web-demo.c V1.1
  Description: Main module for the CC26XX web demo. Activates on-device resources,
  *   takes sensor readings periodically and caches them for all other modules
  *   to use. Now with this we can cotroll 5 IOID,such as Input (Analogic/Digital)/Output.
