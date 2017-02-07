@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: slip-radio.c V1.0
+ * File: slip-radio.c V1.1
  * Description: Slip-radio driver
  */
 #include "contiki.h"
