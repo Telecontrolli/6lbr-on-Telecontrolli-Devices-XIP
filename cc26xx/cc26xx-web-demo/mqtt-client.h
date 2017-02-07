@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: mqtt-client.h V1.0
+ * File: mqtt-client.h V1.2
  * Description: Header file for the CC26xx web demo MQTT client functionality
  */
 /*---------------------------------------------------------------------------*/
