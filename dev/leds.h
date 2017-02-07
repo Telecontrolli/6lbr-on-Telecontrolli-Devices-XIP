@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: leds.h V1.0
+ * File: leds.h V1.1
  * Description: The LEDs API defines a set of functions for accessing LEDs for Contiki plaforms with LEDs.
  */
 
