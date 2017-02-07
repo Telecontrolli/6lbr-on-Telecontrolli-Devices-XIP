@@ -1,6 +1,6 @@
 /*
  Author: Telecontrolli srl
- File: cc26xx-web-demo.h V1.0
+ File: cc26xx-web-demo.h V1.2
  */
 /**
  *   An example demonstrating:
