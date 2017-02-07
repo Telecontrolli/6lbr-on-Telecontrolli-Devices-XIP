@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: button-sensor.c V1.0
+ * File: board.h V1.0
  * Description:  Defines related to the SmartRF06 Evaluation Board with a CC1310EM
  *
  * 	 	 This file provides connectivity information on LEDs, Buttons, UART and other peripherals
