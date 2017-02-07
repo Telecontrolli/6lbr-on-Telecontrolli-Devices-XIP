@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: coap-server.c V1.0
+ * File: coap-server.c V1.2
  * Description: The file coap-server.c built the list of resources.
  */
 /*---------------------------------------------------------------------------*/
