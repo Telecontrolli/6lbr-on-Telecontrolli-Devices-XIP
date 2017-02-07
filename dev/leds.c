@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: leds.c V1.0
+ * File: leds.c V1.2
  * Description: The file leds.c set the function of leds
 */
 #include "dev/leds.h"
