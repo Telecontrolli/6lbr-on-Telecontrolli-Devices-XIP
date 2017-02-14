@@ -19,8 +19,6 @@
 #include "sys/process.h"
 #include "mqtt-client.h"
 #include "net-uart.h"
-#include "test_led2.h"
-
 #include <stdint.h>
 /*---------------------------------------------------------------------------*/
 #ifdef CC26XX_WEB_DEMO_CONF_MQTT_CLIENT
@@ -47,10 +45,10 @@
 #define CC26XX_WEB_DEMO_NET_UART 1
 #endif
 
-#ifdef CC26XX_WEB_DEMO_CONF_TEST_LED
-#define CC26XX_WEB_DEMO_TEST_LED CC26XX_WEB_DEMO_TEST_LED
+#ifdef CC26XX_WEB_DEMO_CONF_DIGITAL_IOID0
+#define CC26XX_WEB_DEMO_DIGITAL_IOID0 CC26XX_WEB_DEMO_DIGITAL_IOID0
 #else
-#define CC26XX_WEB_DEMO_TEST_LED 1
+#define CC26XX_WEB_DEMO_DIGITAL_IOID0 1
 #endif
 /*---------------------------------------------------------------------------*/
 /* Active probing of RSSI from our preferred parent */
@@ -103,30 +101,30 @@
  * extending the example
  */
 /*---------------------------------------------------------------------------*/
-/* Sensor types */
-#define CC26XX_WEB_DEMO_SENSOR_BATMON_ANALOGIC 0 
-#define CC26XX_WEB_DEMO_SENSOR_BATMON_TEMP     1
-#define CC26XX_WEB_DEMO_SENSOR_BATMON_VOLT     2
-#define CC26XX_WEB_DEMO_SENSOR_BMP_PRES        3
-#define CC26XX_WEB_DEMO_SENSOR_BMP_TEMP        4
-#define CC26XX_WEB_DEMO_SENSOR_TMP_AMBIENT     5
-#define CC26XX_WEB_DEMO_SENSOR_TMP_OBJECT      6
-#define CC26XX_WEB_DEMO_SENSOR_HDC_TEMP        7
-#define CC26XX_WEB_DEMO_SENSOR_HDC_HUMIDITY    8
-#define CC26XX_WEB_DEMO_SENSOR_OPT_LIGHT       9
-#define CC26XX_WEB_DEMO_SENSOR_MPU_ACC_X      10
-#define CC26XX_WEB_DEMO_SENSOR_MPU_ACC_Y      11
-#define CC26XX_WEB_DEMO_SENSOR_MPU_ACC_Z      12
-#define CC26XX_WEB_DEMO_SENSOR_MPU_GYRO_X     13
-#define CC26XX_WEB_DEMO_SENSOR_MPU_GYRO_Y     14
-#define CC26XX_WEB_DEMO_SENSOR_MPU_GYRO_Z     15
+/* Sensor types */ 
+#define CC26XX_WEB_DEMO_SENSOR_BATMON_TEMP     0
+#define CC26XX_WEB_DEMO_SENSOR_BATMON_VOLT     1
+#define CC26XX_WEB_DEMO_SENSOR_BMP_PRES        2
+#define CC26XX_WEB_DEMO_SENSOR_BMP_TEMP        3
+#define CC26XX_WEB_DEMO_SENSOR_TMP_AMBIENT     4
+#define CC26XX_WEB_DEMO_SENSOR_TMP_OBJECT      5
+#define CC26XX_WEB_DEMO_SENSOR_HDC_TEMP        6
+#define CC26XX_WEB_DEMO_SENSOR_HDC_HUMIDITY    7
+#define CC26XX_WEB_DEMO_SENSOR_OPT_LIGHT       8
+#define CC26XX_WEB_DEMO_SENSOR_MPU_ACC_X       9
+#define CC26XX_WEB_DEMO_SENSOR_MPU_ACC_Y      10
+#define CC26XX_WEB_DEMO_SENSOR_MPU_ACC_Z      11
+#define CC26XX_WEB_DEMO_SENSOR_MPU_GYRO_X     12
+#define CC26XX_WEB_DEMO_SENSOR_MPU_GYRO_Y     13
+#define CC26XX_WEB_DEMO_SENSOR_MPU_GYRO_Z     14
+#define CC26XX_WEB_DEMO_SENSOR_DIGITAL_IOID0  15
 /*---------------------------------------------------------------------------*/
 extern process_event_t cc26xx_web_demo_publish_event;
 extern process_event_t cc26xx_web_demo_config_loaded_event;
 extern process_event_t cc26xx_web_demo_load_config_defaults;
 /*---------------------------------------------------------------------------*/
 #define CC26XX_WEB_DEMO_UNIT_TEMP     "C"
-#define CC26XX_WEB_DEMO_UNIT_ANALOGIC "mv"
+#define CC26XX_WEB_DEMO_UNIT_DIGITAL  "on/off"
 #define CC26XX_WEB_DEMO_UNIT_VOLT     "mV"
 #define CC26XX_WEB_DEMO_UNIT_PRES     "hPa"
 #define CC26XX_WEB_DEMO_UNIT_HUMIDITY "%RH"
