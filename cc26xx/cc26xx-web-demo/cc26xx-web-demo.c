@@ -21,6 +21,7 @@
 #include "mqtt-client.h"
 #include "coap-server.h"
 #include "dev/leds.h"
+#include "dev/button-sensor.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,6 +29,7 @@
 /*---------------------------------------------------------------------------*/
 PROCESS_NAME(cetic_6lbr_client_process);
 PROCESS(cc26xx_web_demo_process, "CC26XX Web Demo");
+PROCESS(button_process, "Button_process");
 /*---------------------------------------------------------------------------*/
 #define SENSOR_READING_PERIOD (CLOCK_SECOND * 20)
 #define SENSOR_READING_RANDOM (CLOCK_SECOND << 4)
@@ -48,6 +50,9 @@ static struct uip_icmp6_echo_reply_notification echo_reply_notification;
 static struct etimer echo_request_timer;
 int def_rt_rssi = 0;
 #endif
+
+uint8_t singleSample = 0;
+
 /*---------------------------------------------------------------------------*/
 process_event_t cc26xx_web_demo_publish_event;
 process_event_t cc26xx_web_demo_config_loaded_event;
@@ -74,9 +79,9 @@ DEMO_SENSOR(batmon_temp, CC26XX_WEB_DEMO_SENSOR_BATMON_TEMP,
 DEMO_SENSOR(batmon_volt, CC26XX_WEB_DEMO_SENSOR_BATMON_VOLT,
             "Battery Volt", "battery-volt", "batmon_volt",
             CC26XX_WEB_DEMO_UNIT_VOLT);
-DEMO_SENSOR(batmon_analogic, CC26XX_WEB_DEMO_SENSOR_BATMON_ANALOGIC,
-            "Valore analogico", "Valore-analogico", "batmon_analogic",
-            CC26XX_WEB_DEMO_UNIT_ANALOGIC);
+DEMO_SENSOR(digital_ioid0, CC26XX_WEB_DEMO_SENSOR_DIGITAL_IOID0,
+            "Digital IOID0", "digital-ioid0", "digital_ioid0",
+            CC26XX_WEB_DEMO_UNIT_DIGITAL);
 
 /*---------------------------------------------------------------------------*/
 static void
@@ -377,7 +382,12 @@ get_batmon_reading(void *data)
       snprintf(buf, CC26XX_WEB_DEMO_CONVERTED_LEN, "%d", (value * 125) >> 5);
     }
   }
-
+ if(digital_ioid0_reading.publish) {
+    if(1) {
+      buf = digital_ioid0_reading.converted;
+      memset(buf, 0, CC26XX_WEB_DEMO_CONVERTED_LEN);
+      snprintf(buf, CC26XX_WEB_DEMO_CONVERTED_LEN, "%d",singleSample); 
+  }}
   ctimer_set(&batmon_timer, next, get_batmon_reading, NULL);
 }
 /*---------------------------------------------------------------------------*/
@@ -739,25 +749,8 @@ init_sensors(void)
 
   list_add(sensor_list, &batmon_temp_reading);
   list_add(sensor_list, &batmon_volt_reading);
+  list_add(sensor_list, &digital_ioid0_reading);
   SENSORS_ACTIVATE(batmon_sensor);
-}
-/*--------------------------------------------------------------------------*/
-PROCESS(button_process, "button process");
-// AUTOSTART_PROCESSES (&button_process);
-/*--------------------------------------------------------------------------*/
-PROCESS_THREAD(button_process, ev, data)
-{
-PROCESS_BEGIN();
-printf("button process! \n");
-SENSORS_ACTIVATE(button_sensor);
-while(1) 
-{
-PROCESS_WAIT_EVENT_UNTIL((ev==sensors_event) && (data == &button_left_sensor)); 
-printf("I pushed the button to toggle YELLOW LED! \n");
-leds_toggle(LEDS_GIALLO);
-printf("The LED %u is %u\n", LEDS_GIALLO, leds_get());
-}
-PROCESS_END();
 }
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(cc26xx_web_demo_process, ev, data)
@@ -789,11 +782,10 @@ PROCESS_THREAD(cc26xx_web_demo_process, ev, data)
 #if CC26XX_WEB_DEMO_NET_UART
   process_start(&net_uart_process, NULL);
 #endif
- 
- #if CC26XX_WEB_DEMO_TEST_LED
- process_start(&blink_process,NULL);
- #endif
-
+#if CC26XX_WEB_DEMO_DIGITAL_IOID0
+  process_start(&button_process,NULL);
+#endif
+	
   cc26xx_web_demo_config.sensors_bitmap = 0xFFFFFFFF; /* all on by default */
   cc26xx_web_demo_config.def_rt_ping_interval =
       CC26XX_WEB_DEMO_DEFAULT_RSSI_MEAS_INTERVAL;
@@ -871,8 +863,37 @@ PROCESS_THREAD(cc26xx_web_demo_process, ev, data)
   }
 
   PROCESS_END();
-} 
-/*---------------------------------------------------------------------------*/
+}
+/*---------------------------------------------------------------------------------*/
+PROCESS_THREAD(button_process, ev, data) {
+PROCESS_EXITHANDLER(goto exit);
+PROCESS_BEGIN();
+
+
+  SENSORS_ACTIVATE(button_sensor);
+  printf("Clicca il bottone! \n");
+  
+  leds_on(LEDS_GIALLO);
+
+  while(1)  {
+  PROCESS_WAIT_EVENT_UNTIL((ev==sensors_event) && (data == &button_left_sensor));
+  printf("Premi il tasto! \n");
+    if(singleSample == 0) {
+      printf("Led off!\n");
+      leds_off(LEDS_GIALLO);
+      singleSample=1;
+    } else if(singleSample == 1) {
+      printf("Led on!\n");
+      leds_toggle(LEDS_GIALLO);
+      singleSample=0;
+    } 
+   get_batmon_reading(NULL);
+   }
+  exit:
+  leds_off(LEDS_GIALLO);
+  PROCESS_END();
+   }
 /**
  * @}
  */
+
