@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: res-sensors.c V1.0
+ * File: res-sensors.c V1.2
  * Description: CoAP resource handler for the Sensortag-CC26xx sensors
  */
 /*---------------------------------------------------------------------------*/
