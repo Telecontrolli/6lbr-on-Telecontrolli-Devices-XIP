@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: res-leds.c V1.0
+ * File: res-leds.c V1.2
  * Description: CoAP resource handler for the CC26xx LEDs. Slightly modified copy of
  * the one found in Contiki's original CoAP example.
  */
