@@ -49,4 +49,4 @@ Feel free to contact our team at:
 support@telecontrolli.com
 
 This link contains a description of the project with a simple video:
--https://www.hackster.io/tc-team/digital-output-management-with-coap-c23c03
+https://www.hackster.io/tc-team/digital-output-management-with-coap-c23c03
