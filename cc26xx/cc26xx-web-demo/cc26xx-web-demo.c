@@ -22,6 +22,10 @@
 #include "coap-server.h"
 #include "dev/leds.h"
 #include "dev/button-sensor.h"
+#include "dev/gpio-interrupt.h"
+#include "sys/timer.h"
+#include "lpm.h"
+#include "ti-lib.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -866,32 +870,24 @@ PROCESS_THREAD(cc26xx_web_demo_process, ev, data)
 }
 /*---------------------------------------------------------------------------------*/
 PROCESS_THREAD(button_process, ev, data) {
-PROCESS_EXITHANDLER(goto exit);
 PROCESS_BEGIN();
-
-
-  SENSORS_ACTIVATE(button_sensor);
-  printf("Clicca il bottone! \n");
-  
-  leds_on(LEDS_GIALLO);
-
-  while(1)  {
-  PROCESS_WAIT_EVENT_UNTIL((ev==sensors_event) && (data == &button_left_sensor));
-  printf("Premi il tasto! \n");
-    if(singleSample == 0) {
-      printf("Led off!\n");
-      leds_off(LEDS_GIALLO);
-      singleSample=1;
-    } else if(singleSample == 1) {
-      printf("Led on!\n");
-      leds_toggle(LEDS_GIALLO);
-      singleSample=0;
-    } 
-   get_batmon_reading(NULL);
-   }
-  exit:
-  leds_off(LEDS_GIALLO);
-  PROCESS_END();
+static struct etimer et_digital;
+while(1)
+ {
+ etimer_set(&et_digital,CLOCK_SECOND*1);
+ PROCESS_WAIT_EVENT();
+ if(IOID_0 == BOARD_IOID_KEY_LEFT) {
+ if(!etimer_expired(&et_digital)) {
+ }
+ if(ti_lib_gpio_read_dio(BOARD_IOID_KEY_LEFT) == 0) {
+ singleSample=ti_lib_gpio_read_dio(BOARD_IOID_KEY_LEFT);
+ } else if(ti_lib_gpio_read_dio(BOARD_IOID_KEY_LEFT) == 1){
+ singleSample=ti_lib_gpio_read_dio(BOARD_IOID_KEY_LEFT);
+ }
+ } 
+get_batmon_reading(NULL);
+} 
+PROCESS_END();
    }
 /**
  * @}
