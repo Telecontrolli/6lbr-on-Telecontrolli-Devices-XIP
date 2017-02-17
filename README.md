@@ -1,6 +1,6 @@
 #6lbr-on-Telecontrolli-Devices V1.2
 
--V1.2: This version contains the Contiki OS with the addition of the input management, adapted to X.IP4T / X.IP5 devices. In the folder cc26xx/cc26xx-web-demo you find the file test_led2.c and test_led2.h. PIN IOID_14 added to control the input LEDs when you press the button.  Adding the resource Digital Input IOID0 on CoAP.
+-V1.2: This version contains the Contiki OS with the addition of the input management, adapted to X.IP4T / X.IP5 devices. PIN IOID_14 added to control the input LEDs when you press the button.  Adding the resource Digital Input IOID0 on CoAP.
 
 Tested with Contiki-develop-20170121
 
