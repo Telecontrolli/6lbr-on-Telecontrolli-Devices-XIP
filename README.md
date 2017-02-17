@@ -1,6 +1,7 @@
 #6lbr-on-Telecontrolli-Devices V1.2
 
--V1.2: This version contains the Contiki OS with the addition of the input management, adapted to X.IP4T / X.IP5 devices. PIN IOID_14 added to control the input LEDs when you press the button.  Adding the resource Digital Input IOID0 on CoAP.
+-V1.2: This version contains the Contiki OS with the addition of the input management, adapted to X.IP4T / X.IP5 devices.
+Monitoring the status of a Digital Input (sensor), simulated with a button, through CoAP protocol.
 
 Tested with Contiki-develop-20170121
 
