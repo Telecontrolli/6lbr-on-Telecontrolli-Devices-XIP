@@ -50,3 +50,6 @@ Devices setting Procedure:
 
 Feel free to contact our team at: 
 support@telecontrolli.com
+
+Here you will find the tutorial:
+http://bit.ly/2lB9u7n
