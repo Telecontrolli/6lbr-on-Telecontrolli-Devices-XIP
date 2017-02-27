@@ -2,7 +2,9 @@
 
 -V1.0: This version contains the Contiki OS adapted to X.IP4T/X.IP5 devices.
 
--V1.1: This version contains the Contiki OS with the addition of the output management, adapted to X.IP4T / X.IP5 devices.
+-V1.1: This version contains the Contiki OS with the addition of the Output management, adapted to X.IP4T / X.IP5 devices. 
+
+-V1.2: This version contains the Contiki OS with the addition of the Input management, adapted to X.IP4T / X.IP5 devices.
 
 Tested with Contiki-develop-20170121
 
