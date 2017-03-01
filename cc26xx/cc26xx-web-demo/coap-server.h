@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: coap-server.h V1.0
+ * File: coap-server.h V1.3
  * Description: The file coap-server.h define the function of coap_server.
  */
 /*---------------------------------------------------------------------------*/
