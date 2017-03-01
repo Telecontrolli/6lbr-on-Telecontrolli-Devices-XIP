@@ -1,10 +1,6 @@
-#6lbr-on-Telecontrolli-Devices V1.0
+#6lbr-on-Telecontrolli-Devices V1.3
 
--V1.0: This version contains the Contiki OS adapted to X.IP4T/X.IP5 devices.
-
--V1.1: This version contains the Contiki OS with the addition of the Output management, adapted to X.IP4T / X.IP5 devices. 
-
--V1.2: This version contains the Contiki OS with the addition of the Input management, adapted to X.IP4T / X.IP5 devices.
+-V1.3: This version contains the Contiki OS with the addition of the Input management, adapted to X.IP4T / X.IP5 devices. The code cc26xx-web-demo is set for reading the ADC input. The value can be displayed in the resource IOID_14 of CoAP.
 
 Tested with Contiki-develop-20170121
 
