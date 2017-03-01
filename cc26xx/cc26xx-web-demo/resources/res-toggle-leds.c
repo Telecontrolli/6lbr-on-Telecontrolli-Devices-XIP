@@ -1,6 +1,6 @@
 /*
  * * Author: Telecontrolli srl
- * File: res-toggle-leds.c V1.0
+ * File: res-toggle-leds.c V1.3
  * Description:CoAP resource to toggle LEDs. Slightly modified copy of the one found
  *             in Contiki's original CoAP example.
 /*---------------------------------------------------------------------------*/
