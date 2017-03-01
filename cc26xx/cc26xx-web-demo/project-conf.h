@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: project-conf.h V1.0
+ * File: project-conf.h V1.3
  * Description: The file project-conf.h define the various components and set initial conditions
  */
 /*---------------------------------------------------------------------------*/
