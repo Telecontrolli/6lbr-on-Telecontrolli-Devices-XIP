@@ -6,6 +6,8 @@
 
 -V1.2: This version contains the Contiki OS with the addition of the Input management, adapted to X.IP4T / X.IP5 devices.
 
+-v1.3: This version contains the Contiki OS with the addition of the Input management, adapted to X.IP4T / X.IP5 devices. The code cc26xx-web-demo is set for reading the ADC input. The value can be displayed in the resource IOID_14 of CoAP.
+
 Tested with Contiki-develop-20170121
 
 Contiki is an open source Operating System that connects tiny low-power microcontrollers to the Internet and allows to develope a wild range of applications (which have an efficient use in the Hardware), providing powerful low-power wireless communication. Telecontrolli srl developed a Contiki-based application for its own Smart Devices (CC1310-based):
