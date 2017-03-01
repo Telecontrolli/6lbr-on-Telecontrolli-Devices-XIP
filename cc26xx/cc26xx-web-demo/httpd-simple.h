@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: httpd-simple.h V1.0
+ * File: httpd-simple.h V1.3
  * Description: The file httpd-simple.h define the function of httpd.
 /*---------------------------------------------------------------------------*/
 #ifndef HTTPD_SIMPLE_H_
