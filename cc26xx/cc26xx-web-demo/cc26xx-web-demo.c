@@ -84,14 +84,6 @@ DEMO_SENSOR(batmon_volt, CC26XX_WEB_DEMO_SENSOR_BATMON_VOLT,
 DEMO_SENSOR(adc_ioid14, CC26XX_WEB_DEMO_SENSOR_ADC_IOID14,
             "ADC IOID14", "adc-ioid14", "adc_ioid14",
             CC26XX_WEB_DEMO_UNIT_VOLT);
-DEMO_SENSOR(digital_ioid0, CC26XX_WEB_DEMO_SENSOR_DIGITAL_IOID0,
-            "Digital IOID0", "digital-ioid0", "digital_ioid0",
-            CC26XX_WEB_DEMO_UNIT_VOLT);
-DEMO_SENSOR(attuatore, CC26XX_WEB_DEMO_SENSOR_ATTUATORE,
-            "Attuatore", "Attuatore", "Attuatore",
-            CC26XX_WEB_DEMO_UNIT_VOLT);
-
-
 /*---------------------------------------------------------------------------*/
 static void
 publish_led_off(void *d)
@@ -759,8 +751,6 @@ init_sensors(void)
   list_add(sensor_list, &batmon_temp_reading);
   list_add(sensor_list, &batmon_volt_reading);
   list_add(sensor_list, &adc_ioid14_reading);
-  list_add(sensor_list, &digital_ioid0_reading);
-  list_add(sensor_list, &attuatore_reading);
   SENSORS_ACTIVATE(batmon_sensor);
 }
 /*---------------------------------------------------------------------------*/
