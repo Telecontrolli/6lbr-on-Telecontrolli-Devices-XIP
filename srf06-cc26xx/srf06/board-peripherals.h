@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: board-peripherals.h V1.0
+ * File: board-peripherals.h V1.3
  * Description:Defines related to the SmartRF06 Evaluation Board irrespective of the EM
  * mounted on it. This file provides connectivity information on LEDs, Buttons, UART and
  * other peripherals
