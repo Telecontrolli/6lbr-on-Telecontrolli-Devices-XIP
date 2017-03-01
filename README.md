@@ -48,12 +48,6 @@ Devices setting Procedure:
 6) Replace the folders “slip-radio” and “rpl-border-router” in “home/pi/contiki/examples/ipv6” with the folders “slip-radio” and “rpl-border-router” you find in “6lbr-on-Telecontrolli-Devices-XIP”
 
 7) Replace the folder “srf06” in “home/pi/contiki/platform/srf06-cc26xx/srf06” with the folder “srf06” you find in “6lbr-on--      Telecontrolli-Devices-XIP”. This folder includes “board.h”.
-  
-Find below the X.IP4T and X.IP5 datasheets:
-
-- X.ip4T SmartModule http://bit.ly/2jsPGSb
-
-- X.ip5 SmartMachine http://bit.ly/2kmMBBJ
 
 Feel free to contact our team at: 
 support@telecontrolli.com
