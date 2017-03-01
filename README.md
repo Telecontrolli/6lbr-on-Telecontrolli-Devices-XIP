@@ -61,5 +61,7 @@ Find below the X.IP4T and X.IP5 datasheets:
 
 - X.ip5 SmartMachine http://bit.ly/2kmMBBJ
 
+Find our projects on Hackster.io: https://www.hackster.io/Telecontrolli
+
 Feel free to contact our team at: 
 support@telecontrolli.com
