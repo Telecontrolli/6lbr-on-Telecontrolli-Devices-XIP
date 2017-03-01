@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: leds-arch.c V1.0
+ * File: leds-arch.c V1.3
  * Description: Driver for the SmartRF06EB LEDs when a CC13xx/CC26xx EM is mounted on it
  */
 /*---------------------------------------------------------------------------*/
