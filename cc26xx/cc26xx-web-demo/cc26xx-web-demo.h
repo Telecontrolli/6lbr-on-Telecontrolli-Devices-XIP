@@ -51,18 +51,6 @@
 #else
 #define CC26XX_WEB_DEMO_ADC_IOID14 1
 #endif
-
-#ifdef CC26XX_WEB_DEMO_CONF_DIGITAL_IOID0
-#define CC26XX_WEB_DEMO_DIGITAL_IOID0 CC26XX_WEB_DEMO_CONF_DIGITAL_IOID0
-#else
-#define CC26XX_WEB_DEMO_DIGITAL_IOID0 1
-#endif
-
-#ifdef CC26XX_WEB_DEMO_CONF_ATTUATORE
-#define CC26XX_WEB_DEMO_ATTUATORE CC26XX_WEB_DEMO_CONF_ATTUATORE
-#else
-#define CC26XX_WEB_DEMO_ATTUATORE 1
-#endif
 /*---------------------------------------------------------------------------*/
 /* Active probing of RSSI from our preferred parent */
 #if (CC26XX_WEB_DEMO_COAP_SERVER || CC26XX_WEB_DEMO_MQTT_CLIENT)
@@ -131,8 +119,6 @@
 #define CC26XX_WEB_DEMO_SENSOR_MPU_GYRO_Y     13
 #define CC26XX_WEB_DEMO_SENSOR_MPU_GYRO_Z     14
 #define CC26XX_WEB_DEMO_SENSOR_ADC_IOID14     15 
-#define CC26XX_WEB_DEMO_SENSOR_DIGITAL_IOID0  16
-#define CC26XX_WEB_DEMO_SENSOR_ATTUATORE      17
 /*---------------------------------------------------------------------------*/
 extern process_event_t cc26xx_web_demo_publish_event;
 extern process_event_t cc26xx_web_demo_config_loaded_event;
