@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: net-uart.h V1.0
+ * File: net-uart.h V1.3
  * Description: The file net-uart.h define the function of net-uart.c
  */
 #ifndef NET_UART_H_
