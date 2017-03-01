@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: project-conf.h V1.0
+ * File: project-conf.h V1.3
  * Description: MAC framer that does nothing...
  */
 #include "net/mac/framer.h"
