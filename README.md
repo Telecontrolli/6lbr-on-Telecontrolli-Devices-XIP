@@ -9,7 +9,7 @@ Contiki is an open source Operating System that connects tiny low-power microcon
 - X.IP4T SmartModule
 - X.IP5 SmartMachine
 
-This application v1.0 enables communication for sensors reading and Devices activation through 6lowpan/CoAP protocols between a “6lbr-Slip-radio” (i.e. a router device) and a “cc26xx-web-demo” device. This Repository contains all files to operate and build the firmware for X.IP4T and X.IP5 devices.
+This application v1.3 enables communication for sensors reading and Devices activation through 6lowpan/CoAP protocols between a “6lbr-Slip-radio” (i.e. a router device) and a “cc26xx-web-demo” device. This Repository contains all files to operate and build the firmware for X.IP4T and X.IP5 devices.
 
 Devices setting Procedure:
 
