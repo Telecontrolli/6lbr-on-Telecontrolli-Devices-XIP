@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: button-sensor.h V1.0
+ * File: button-sensor.h V1.3
  * Description:Header file for the SmartRF06EB + CC13xx/CC26xxEM Button Driver
  */
 /*---------------------------------------------------------------------------*/
