@@ -1,6 +1,6 @@
 /*
  Author: Telecontrolli srl
- File: cc26xx-web-demo.c V1.0
+ File: cc26xx-web-demo.c V1.3
  Description: Main module for the CC26XX web demo. Activates on-device resources,
  *   takes sensor readings periodically and caches them for all other modules
  *   to use. Now with this we can cotroll 5 IOID,such as Input (Analogic/Digital)/Output.
@@ -21,6 +21,9 @@
 #include "mqtt-client.h"
 #include "coap-server.h"
 #include "dev/leds.h"
+#include "ti-lib.h"
+#include "driverlib/aux_adc.h"
+#include "driverlib/aux_wuc.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,6 +31,7 @@
 /*---------------------------------------------------------------------------*/
 PROCESS_NAME(cetic_6lbr_client_process);
 PROCESS(cc26xx_web_demo_process, "CC26XX Web Demo");
+PROCESS(adc_process, "ADC_process");
 /*---------------------------------------------------------------------------*/
 #define SENSOR_READING_PERIOD (CLOCK_SECOND * 20)
 #define SENSOR_READING_RANDOM (CLOCK_SECOND << 4)
@@ -48,6 +52,9 @@ static struct uip_icmp6_echo_reply_notification echo_reply_notification;
 static struct etimer echo_request_timer;
 int def_rt_rssi = 0;
 #endif
+
+uint16_t singleSample;
+
 /*---------------------------------------------------------------------------*/
 process_event_t cc26xx_web_demo_publish_event;
 process_event_t cc26xx_web_demo_config_loaded_event;
@@ -74,9 +81,16 @@ DEMO_SENSOR(batmon_temp, CC26XX_WEB_DEMO_SENSOR_BATMON_TEMP,
 DEMO_SENSOR(batmon_volt, CC26XX_WEB_DEMO_SENSOR_BATMON_VOLT,
             "Battery Volt", "battery-volt", "batmon_volt",
             CC26XX_WEB_DEMO_UNIT_VOLT);
-DEMO_SENSOR(batmon_analogic, CC26XX_WEB_DEMO_SENSOR_BATMON_ANALOGIC,
-            "Valore analogico", "Valore-analogico", "batmon_analogic",
-            CC26XX_WEB_DEMO_UNIT_ANALOGIC);
+DEMO_SENSOR(adc_ioid14, CC26XX_WEB_DEMO_SENSOR_ADC_IOID14,
+            "ADC IOID14", "adc-ioid14", "adc_ioid14",
+            CC26XX_WEB_DEMO_UNIT_VOLT);
+DEMO_SENSOR(digital_ioid0, CC26XX_WEB_DEMO_SENSOR_DIGITAL_IOID0,
+            "Digital IOID0", "digital-ioid0", "digital_ioid0",
+            CC26XX_WEB_DEMO_UNIT_VOLT);
+DEMO_SENSOR(attuatore, CC26XX_WEB_DEMO_SENSOR_ATTUATORE,
+            "Attuatore", "Attuatore", "Attuatore",
+            CC26XX_WEB_DEMO_UNIT_VOLT);
+
 
 /*---------------------------------------------------------------------------*/
 static void
@@ -378,6 +392,12 @@ get_batmon_reading(void *data)
     }
   }
 
+  if(adc_ioid14_reading.publish) {
+    if(1) {
+      buf = adc_ioid14_reading.converted;
+      memset(buf, 0, CC26XX_WEB_DEMO_CONVERTED_LEN);
+      snprintf(buf, CC26XX_WEB_DEMO_CONVERTED_LEN, "%d",singleSample);
+  }}
   ctimer_set(&batmon_timer, next, get_batmon_reading, NULL);
 }
 /*---------------------------------------------------------------------------*/
@@ -736,28 +756,12 @@ init_sensor_readings(void)
 static void
 init_sensors(void)
 {
-
   list_add(sensor_list, &batmon_temp_reading);
   list_add(sensor_list, &batmon_volt_reading);
+  list_add(sensor_list, &adc_ioid14_reading);
+  list_add(sensor_list, &digital_ioid0_reading);
+  list_add(sensor_list, &attuatore_reading);
   SENSORS_ACTIVATE(batmon_sensor);
-}
-/*--------------------------------------------------------------------------*/
-PROCESS(button_process, "button process");
-// AUTOSTART_PROCESSES (&button_process);
-/*--------------------------------------------------------------------------*/
-PROCESS_THREAD(button_process, ev, data)
-{
-PROCESS_BEGIN();
-printf("button process! \n");
-SENSORS_ACTIVATE(button_sensor);
-while(1) 
-{
-PROCESS_WAIT_EVENT_UNTIL((ev==sensors_event) && (data == &button_left_sensor)); 
-printf("I pushed the button to toggle YELLOW LED! \n");
-leds_toggle(LEDS_GIALLO);
-printf("The LED %u is %u\n", LEDS_GIALLO, leds_get());
-}
-PROCESS_END();
 }
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(cc26xx_web_demo_process, ev, data)
@@ -788,6 +792,10 @@ PROCESS_THREAD(cc26xx_web_demo_process, ev, data)
 
 #if CC26XX_WEB_DEMO_NET_UART
   process_start(&net_uart_process, NULL);
+#endif
+
+#if CC26XX_WEB_DEMO_ADC_IOID14
+  process_start(&adc_process, NULL);
 #endif
 
   cc26xx_web_demo_config.sensors_bitmap = 0xFFFFFFFF; /* all on by default */
@@ -868,6 +876,60 @@ PROCESS_THREAD(cc26xx_web_demo_process, ev, data)
 
   PROCESS_END();
 } 
+/*---------------------------------------------------------------------------*/
+PROCESS_THREAD(adc_process, ev, data)
+{
+  PROCESS_BEGIN();
+    static struct etimer et_adc;
+    while(1)
+ {
+
+	etimer_set(&et_adc,CLOCK_SECOND*5);
+	PROCESS_WAIT_EVENT();
+        if(etimer_expired(&et_adc)) {
+
+        //intialisation of ADC
+        ti_lib_aon_wuc_aux_wakeup_event(AONWUC_AUX_WAKEUP);
+        while(!(ti_lib_aon_wuc_power_status_get() & AONWUC_AUX_POWER_ON))
+        { }
+
+        // Enable clock for ADC digital and analog interface (not currently enabled in driver)
+        // Enable clocks
+        ti_lib_aux_wuc_clock_enable(AUX_WUC_ADI_CLOCK | AUX_WUC_ANAIF_CLOCK | AUX_WUC_SMPH_CLOCK);
+        while(ti_lib_aux_wuc_clock_status(AUX_WUC_ADI_CLOCK | AUX_WUC_ANAIF_CLOCK | AUX_WUC_SMPH_CLOCK) != AUX_WUC_CLOCK_READY)
+        { }
+
+        printf("clock selected\r\n");
+        
+        // Connect AUX IO0 (IOID0, but also DP2 on XDS110) as analog input.
+        AUXADCSelectInput(ADC_COMPB_IN_AUXIO0);  
+        printf("input selected\r\n");
+        
+        // Set up ADC range
+        // AUXADC_REF_FIXED = nominally 4.3 V
+        AUXADCEnableSync(AUXADC_REF_FIXED,  AUXADC_SAMPLE_TIME_2P7_US, AUXADC_TRIGGER_MANUAL);
+        printf("init adc --- OK\r\n");
+
+        //Trigger ADC converting
+        AUXADCGenManualTrigger();
+        printf("trigger --- OK\r\n");
+        
+        //reading adc value
+        singleSample = AUXADCReadFifo();
+
+        printf("%d mv on ADC\r\n",singleSample);
+        
+        //shut the adc down
+        AUXADCDisable();
+        //printf("disable --- OK\r\n");
+        get_batmon_reading(NULL);
+        
+        etimer_reset(&et_adc);
+          }
+    }
+
+  PROCESS_END();
+}
 /*---------------------------------------------------------------------------*/
 /**
  * @}
