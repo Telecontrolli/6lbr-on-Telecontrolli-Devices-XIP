@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: res-sensors.c V1.0
+ * File: res-sensors.c V1.3
  * Description: CoAP resource handler for the Sensortag-CC26xx sensors
  */
 /*---------------------------------------------------------------------------*/
@@ -80,10 +80,10 @@ res_get_handler_batmon_volt(void *request, void *response, uint8_t *buffer,
 }
 /*---------------------------------------------------------------------------*/
 static void
-res_get_handler_batmon_analogic(void *request, void *response, uint8_t *buffer,
+res_get_handler_adc_ioid14(void *request, void *response, uint8_t *buffer,
 				   uint16_t preferred_size, int32_t *offset)
 {
-  res_get_handler_all(CC26XX_WEB_DEMO_SENSOR_BATMON_ANALOGIC, request, response,
+  res_get_handler_all(CC26XX_WEB_DEMO_SENSOR_ADC_IOID14, request, response,
                       buffer, preferred_size, offset);	
 }
 /*---------------------------------------------------------------------------*/
@@ -93,8 +93,8 @@ RESOURCE(res_batmon_temp, "Titolo=\"Livello Temperatura\";rt=\"C\"",
 RESOURCE(res_batmon_volt, "Titolo=\"Tensione di batteria\";rt=\"mV\"",
          res_get_handler_batmon_volt, NULL, NULL, NULL);
 /*---------------------------------------------------------------------------*/
-RESOURCE(res_batmond_analogic, "Titolo=\"Valore analogico output\";rt\"mv\"",
-         res_get_handler_batmon_analogic, NULL, NULL, NULL);
+RESOURCE(res_adc_ioid14, "Titolo=\"ADC analogic\";rt\"mv\"",
+         res_get_handler_adc_ioid14, NULL, NULL, NULL);
 /*---------------------------------------------------------------------------*/
 #if BOARD_SENSORTAG
 /*---------------------------------------------------------------------------*/
