@@ -55,12 +55,11 @@ Devices setting Procedure:
 
 7) Replace the folder “srf06” in “home/pi/contiki/platform/srf06-cc26xx/srf06” with the folder “srf06” you find in “6lbr-on--      Telecontrolli-Devices-XIP”. This folder includes “board.h”.
   
-Find below the X.IP4T e X.IP5 datasheetX.IP4T
+Find below the X.IP4T and X.IP5 datasheets:
 
-- X.ip4T SmartModule 
-http://www.telecontrolli.com/resource/downloads/datasheet/iot-system/x-ip-transceiver-family/81-x-ip4t-datasheet/file.html
-- X.ip5 SmartMachine 
-http://www.telecontrolli.com/resource/downloads/datasheet/iot-system/x-ip-transceiver-family/82-x-ip5-datasheet/file.html
+- X.ip4T SmartModule http://bit.ly/2jsPGSb
+
+- X.ip5 SmartMachine http://bit.ly/2kmMBBJ
 
 Feel free to contact our team at: 
 support@telecontrolli.com
