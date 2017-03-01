@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: res-device.c V1.0
+ * File: res-device.c V1.3
  * Description: CoAP resource handler for CC26XX software and hardware version
 /*---------------------------------------------------------------------------*/
 #include "contiki.h"
