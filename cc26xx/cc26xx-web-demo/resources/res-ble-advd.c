@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: res-ble-advd.c V1.0
+ * File: res-ble-advd.c V1.3
  * Description: CoAP resource to start/stop/configure BLE advertisements
  */
 /*---------------------------------------------------------------------------*/
