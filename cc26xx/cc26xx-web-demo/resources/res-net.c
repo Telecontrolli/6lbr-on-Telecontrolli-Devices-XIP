@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: res-net.c V1.0
+ * File: res-net.c V1.3
  * Description: CoAP resource handler for network-related resources
  */
 /*---------------------------------------------------------------------------*/
