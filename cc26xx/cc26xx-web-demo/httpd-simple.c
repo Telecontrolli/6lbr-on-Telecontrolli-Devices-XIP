@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: httpd-simple.c V1.0
+ * File: httpd-simple.c V1.3
  * Description: A simple web server which displays network and sensor information
  */
 /*---------------------------------------------------------------------------*/
