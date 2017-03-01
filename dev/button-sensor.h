@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File:button-sensor.h V1.0
+ * File:button-sensor.h V1.3
  * Description: This file is part of the Contiki operating system.
  */
 #ifndef BUTTON_SENSOR_H_
