@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: coap-server.c V1.0
+ * File: coap-server.c V1.3
  * Description: The file coap-server.c built the list of resources.
  */
 /*---------------------------------------------------------------------------*/
@@ -19,7 +19,7 @@ extern resource_t res_leds;
 
 extern resource_t res_batmon_temp;
 extern resource_t res_batmon_volt;
-extern resource_t res_batmon_analogic;
+extern resource_t res_adc_ioid14;
 
 extern resource_t res_device_sw;
 extern resource_t res_device_hw;
@@ -93,7 +93,7 @@ PROCESS_THREAD(coap_server_process, ev, data)
 
   rest_activate_resource(&res_batmon_temp, "Sensori/batmon/Livello Temperatura");
   rest_activate_resource(&res_batmon_volt, "Sensori/batmon/Livello Batteria");
-  // rest_activate_resource(&res_batmon_analogic, "Sensori/batmon/Output Analogico");
+  rest_activate_resource(&res_adc_ioid14, "Sensori/Analog/IOID14");
   
   rest_activate_resource(&res_device_hw, "Dispositivo/Middleware/Hardware");
   rest_activate_resource(&res_device_sw, "Dispositivo/Middleware/Software");
