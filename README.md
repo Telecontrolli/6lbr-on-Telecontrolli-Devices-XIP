@@ -1,3 +1,4 @@
+
 #6lbr-on-Telecontrolli-Devices V1.3
 
 -V1.3: This version contains the Contiki OS with the addition of the Input management, adapted to X.IP4T / X.IP5 devices. The code cc26xx-web-demo is set for reading the ADC input. The value can be displayed in the resource IOID_14 of CoAP.
@@ -49,5 +50,7 @@ Devices setting Procedure:
 
 7) Replace the folder “srf06” in “home/pi/contiki/platform/srf06-cc26xx/srf06” with the folder “srf06” you find in “6lbr-on--      Telecontrolli-Devices-XIP”. This folder includes “board.h”.
 
-Feel free to contact our team at: 
-support@telecontrolli.com
+Feel free to contact our team at: support@telecontrolli.com
+
+Find this and other projects on Hackster.io: http://bit.ly/2mwVv3C
+
