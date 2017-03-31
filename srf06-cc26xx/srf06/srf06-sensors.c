@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: srf06-sensors.c V1.0
+ * File: srf06-sensors.c V1.4
  * Description:Generic module controlling sensors on the SmartRF06EB when a CC26xx is mounted on the board
  */
 /*---------------------------------------------------------------------------*/
