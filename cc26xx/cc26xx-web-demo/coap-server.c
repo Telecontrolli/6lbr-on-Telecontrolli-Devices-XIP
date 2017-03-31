@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: coap-server.c V1.0
+ * File: coap-server.c V1.4
  * Description: The file coap-server.c built the list of resources.
  */
 /*---------------------------------------------------------------------------*/
@@ -19,24 +19,26 @@ extern resource_t res_leds;
 
 extern resource_t res_batmon_temp;
 extern resource_t res_batmon_volt;
-extern resource_t res_batmon_analogic;
+extern resource_t res_adc_ioid14;
+extern resource_t res_digital_ioid0;
+extern resource_t res_digital;
 
 extern resource_t res_device_sw;
 extern resource_t res_device_hw;
-extern resource_t res_device_uptime;
-extern resource_t res_device_cfg_reset;
+//extern resource_t res_device_uptime;
+//extern resource_t res_device_cfg_reset;
 
-extern resource_t res_parent_rssi;
+//extern resource_t res_parent_rssi;
 extern resource_t res_parent_ip;
 
 #if RF_BLE_ENABLED
-extern resource_t res_ble_advd;
+//extern resource_t res_ble_advd;
 #endif
 
-extern resource_t res_toggle_rosso;
-extern resource_t res_toggle_verde;
-extern resource_t res_toggle_giallo;
-extern resource_t res_toggle_arancio;
+extern resource_t res_toggle_red;
+extern resource_t res_toggle_green;
+extern resource_t res_toggle_yellow;
+//extern resource_t res_toggle_orange;
 
 /* Board-specific resources */
 #if BOARD_SENSORTAG
@@ -68,10 +70,11 @@ static void
 start_board_resources(void)
 {
 
-  rest_activate_resource(&res_toggle_verde, "Led/Verde");
-  rest_activate_resource(&res_toggle_rosso, "Led/Rosso");
-  rest_activate_resource(&res_toggle_giallo, "Led/Giallo");
-  rest_activate_resource(&res_toggle_arancio, "Led/Arancio");
+  rest_activate_resource(&res_toggle_green, "Output/Digital/IOID11");
+  rest_activate_resource(&res_toggle_red, "Output/Led on Board/Red");
+  rest_activate_resource(&res_toggle_yellow, "Output/Led on Board/Yellow");
+  //rest_activate_resource(&res_toggle_orange, "Output/Led on Board/Orange");
+  rest_activate_resource(&res_digital, "Output/Digital");
   rest_activate_resource(&res_leds, "lt");
 
 #if BOARD_SMARTRF06EB
@@ -91,20 +94,21 @@ PROCESS_THREAD(coap_server_process, ev, data)
   /* Initialize the REST engine. */
   rest_init_engine();
 
-  rest_activate_resource(&res_batmon_temp, "Sensori/batmon/Livello Temperatura");
-  rest_activate_resource(&res_batmon_volt, "Sensori/batmon/Livello Batteria");
-  // rest_activate_resource(&res_batmon_analogic, "Sensori/batmon/Output Analogico");
+  rest_activate_resource(&res_batmon_temp, "Sensor/batmon/Temperature");
+  rest_activate_resource(&res_batmon_volt, "Sensor/batmon/Battery Level");
+  rest_activate_resource(&res_adc_ioid14, "Input/Analog/IOID14");
+  rest_activate_resource(&res_digital_ioid0, "Input/Digital/IOID0");
   
-  rest_activate_resource(&res_device_hw, "Dispositivo/Middleware/Hardware");
-  rest_activate_resource(&res_device_sw, "Dispositivo/Middleware/Software");
-  rest_activate_resource(&res_device_uptime, "Dispositivo/Uptime");
-  rest_activate_resource(&res_device_cfg_reset, "Dispositivo/Reset");
+  rest_activate_resource(&res_device_hw, "Device/Middleware/Hardware");
+  rest_activate_resource(&res_device_sw, "Device/Middleware/Software");
+  //rest_activate_resource(&res_device_uptime, "Device/Uptime");
+  //rest_activate_resource(&res_device_cfg_reset, "Device/Reset");
 
-  rest_activate_resource(&res_parent_rssi, "Rete/Nodo/RSSI");
-  rest_activate_resource(&res_parent_ip, "Rete/Nodo/IPv6");
+  //rest_activate_resource(&res_parent_rssi, "Rete/Nodo/RSSI");
+  rest_activate_resource(&res_parent_ip, "Network/Address/IPv6");
 
 #if RF_BLE_ENABLED
-  rest_activate_resource(&res_ble_advd, "Dispositivo/ble_advd");
+  //rest_activate_resource(&res_ble_advd, "Device/ble_advd");
   #endif
 
   start_board_resources();
