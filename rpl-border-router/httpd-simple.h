@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: httpd-simple.h V1.0
+ * File: httpd-simple.h V1.4
  * Description: A simple webserver
  */
 
