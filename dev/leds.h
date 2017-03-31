@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: leds.h V1.0
+ * File: leds.h V1.4
  * Description: The LEDs API defines a set of functions for accessing LEDs for Contiki plaforms with LEDs.
  */
 
@@ -17,17 +17,17 @@ void leds_init(void);
  */
 void leds_blink(void);
 
-#ifndef LEDS_VERDE
-#define LEDS_VERDE  1
+#ifndef LEDS_GREEN
+#define LEDS_GREEN  1
 #endif /* LEDS_VERDE */
-#ifndef LEDS_GIALLO
-#define LEDS_GIALLO  2
+#ifndef LEDS_YELLOW
+#define LEDS_YELLOW  2
 #endif /* LEDS_GIALLO */
-#ifndef LEDS_ROSSO
-#define LEDS_ROSSO  4
+#ifndef LEDS_RED
+#define LEDS_RED  4
 #endif /* LEDS_ROSSO */
-#ifndef LEDS_BLU
-#define LEDS_BLU  LEDS_GIALLO
+#ifndef LEDS_BLUE
+#define LEDS_BLUE LEDS_YELLOW
 #endif /* LEDS_BLU */
 
 #ifdef LEDS_CONF_ALL
