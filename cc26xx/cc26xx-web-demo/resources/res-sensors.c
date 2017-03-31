@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: res-sensors.c V1.0
+ * File: res-sensors.c V1.4
  * Description: CoAP resource handler for the Sensortag-CC26xx sensors
  */
 /*---------------------------------------------------------------------------*/
@@ -80,21 +80,43 @@ res_get_handler_batmon_volt(void *request, void *response, uint8_t *buffer,
 }
 /*---------------------------------------------------------------------------*/
 static void
-res_get_handler_batmon_analogic(void *request, void *response, uint8_t *buffer,
+res_get_handler_adc_ioid14(void *request, void *response, uint8_t *buffer,
 				   uint16_t preferred_size, int32_t *offset)
 {
-  res_get_handler_all(CC26XX_WEB_DEMO_SENSOR_BATMON_ANALOGIC, request, response,
+  res_get_handler_all(CC26XX_WEB_DEMO_SENSOR_ADC_IOID14, request, response,
                       buffer, preferred_size, offset);	
 }
 /*---------------------------------------------------------------------------*/
-RESOURCE(res_batmon_temp, "Titolo=\"Livello Temperatura\";rt=\"C\"",
+static void
+res_get_handler_digital_ioid0(void *request, void *response, uint8_t *buffer,
+				   uint16_t preferred_size, int32_t *offset)
+{
+  res_get_handler_all(CC26XX_WEB_DEMO_SENSOR_DIGITAL_IOID0, request, response,
+                      buffer, preferred_size, offset);	
+}
+/*---------------------------------------------------------------------------*/
+static void
+res_get_handler_digital(void *request, void *response, uint8_t *buffer,
+                            uint16_t preferred_size, int32_t *offset)
+{
+  res_get_handler_all(CC26XX_WEB_DEMO_SENSOR_DIGITAL, request, response,
+                      buffer, preferred_size, offset);
+}
+/*---------------------------------------------------------------------------*/
+RESOURCE(res_batmon_temp, "Title=\"Temperature Level\";rt=\"C\"",
          res_get_handler_batmon_temp, NULL, NULL, NULL);
 /*---------------------------------------------------------------------------*/
-RESOURCE(res_batmon_volt, "Titolo=\"Tensione di batteria\";rt=\"mV\"",
+RESOURCE(res_batmon_volt, "Title=\"Battery Level\";rt=\"mV\"",
          res_get_handler_batmon_volt, NULL, NULL, NULL);
 /*---------------------------------------------------------------------------*/
-RESOURCE(res_batmond_analogic, "Titolo=\"Valore analogico output\";rt\"mv\"",
-         res_get_handler_batmon_analogic, NULL, NULL, NULL);
+RESOURCE(res_adc_ioid14, "Title=\"ADC analogic\";rt\"mv\"",
+         res_get_handler_adc_ioid14, NULL, NULL, NULL);
+/*---------------------------------------------------------------------------*/
+RESOURCE(res_digital_ioid0, "Title=\"Output digital\";rt\"mv\"",
+         res_get_handler_digital_ioid0, NULL, NULL, NULL);
+/*---------------------------------------------------------------------------*/
+RESOURCE(res_digital, "Title=\"Digital\";rt\"mv\"",
+         res_get_handler_digital, NULL, NULL, NULL);
 /*---------------------------------------------------------------------------*/
 #if BOARD_SENSORTAG
 /*---------------------------------------------------------------------------*/
