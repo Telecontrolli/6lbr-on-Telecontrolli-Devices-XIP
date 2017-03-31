@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: coap-server.c V1.0
+ * File: coap-server.c V1.4
  * Description:  A process which receives data over UART and transmits them over UDP
  *               to a pre-defined IPv6 address and port. It also listens on the same UDP
  *               port for messages, which it prints out over UART.
