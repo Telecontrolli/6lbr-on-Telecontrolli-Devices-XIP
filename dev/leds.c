@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: leds.c V1.0
+ * File: leds.c V1.4
  * Description: The file leds.c set the function of leds
 */
 #include "dev/leds.h"
@@ -16,26 +16,26 @@ show_leds(unsigned char new_leds)
   changed = leds ^ new_leds;
   leds = new_leds;
 
-  if(changed & LEDS_VERDE) {
+  if(changed & LEDS_GREEN) {
     /* Green did change */
-    if(leds & LEDS_VERDE) {
-      ENERGEST_ON(ENERGEST_TYPE_LED_VERDE);
+    if(leds & LEDS_GREEN) {
+      ENERGEST_ON(ENERGEST_TYPE_LED_GREEN);
     } else {
-      ENERGEST_OFF(ENERGEST_TYPE_LED_VERDE);
+      ENERGEST_OFF(ENERGEST_TYPE_LED_GREEN);
     }
   }
-  if(changed & LEDS_GIALLO) {
-    if(leds & LEDS_GIALLO) {
-      ENERGEST_ON(ENERGEST_TYPE_LED_GIALLO);
+  if(changed & LEDS_YELLOW) {
+    if(leds & LEDS_YELLOW) {
+      ENERGEST_ON(ENERGEST_TYPE_LED_YELLOW);
     } else {
-      ENERGEST_OFF(ENERGEST_TYPE_LED_GIALLO);
+      ENERGEST_OFF(ENERGEST_TYPE_LED_YELLOW);
     }
   }
-  if(changed & LEDS_ROSSO) {
-    if(leds & LEDS_ROSSO) {
-      ENERGEST_ON(ENERGEST_TYPE_LED_ROSSO);
+  if(changed & LEDS_RED) {
+    if(leds & LEDS_RED) {
+      ENERGEST_ON(ENERGEST_TYPE_LED_RED);
     } else {
-      ENERGEST_OFF(ENERGEST_TYPE_LED_ROSSO);
+      ENERGEST_OFF(ENERGEST_TYPE_LED_RED);
     }
   }
   leds_arch_set(leds);
