@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: slip-bridge.c V1.0
+ * File: slip-bridge.c V1.4
  * Description: Slip fallback interface
  */
 
