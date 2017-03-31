@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: als-sensor.c V1.0
+ * File: als-sensor.c V1.4
  * Description: Driver for the SmartRF06EB ALS when a CC13xx/CC26xxEM is mounted on it
  */
 /*---------------------------------------------------------------------------*/
