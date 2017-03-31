@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: board.h V1.0
+ * File: board.h V1.4
  * Description:  Defines related to the SmartRF06 Evaluation Board with a CC1310EM
  *
  * 	 	 This file provides connectivity information on LEDs, Buttons, UART and other peripherals
@@ -83,8 +83,8 @@
  * Those values are not meant to be modified by the user
  * @{
  */
-#define BOARD_IOID_KEY_LEFT       IOID_14
-#define BOARD_IOID_KEY_RIGHT      IOID_UNUSED
+#define BOARD_IOID_KEY_LEFT       IOID_0
+#define BOARD_IOID_KEY_RIGHT      IOID_14
 #define BOARD_IOID_KEY_UP         IOID_UNUSED
 #define BOARD_IOID_KEY_DOWN       IOID_UNUSED
 #define BOARD_IOID_KEY_SELECT     IOID_UNUSED
