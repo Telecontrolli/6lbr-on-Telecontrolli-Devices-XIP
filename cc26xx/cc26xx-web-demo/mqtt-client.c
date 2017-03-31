@@ -1,6 +1,6 @@
 /*
  * Author: Telecontrolli srl
- * File: mqtt-client.c V1.0
+ * File: mqtt-client.c V1.4
  * Description:MQTT/IBM cloud service client for the CC26XX web demo.
  */
 /*---------------------------------------------------------------------------*/
